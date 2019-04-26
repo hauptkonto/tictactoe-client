@@ -1,3 +1,8 @@
-<p>
-  tic-tac-toe works!
-</p>
+<div *ngIf="!userIsSet">
+  <div>What's your name?</div>
+  <input [(ngModel)]="user.Name">
+  <button (click)="SubmitUsername()">Accept</button>
+</div>
+<div *ngIf="userIsSet">
+  <app-board></app-board>
+</div>
