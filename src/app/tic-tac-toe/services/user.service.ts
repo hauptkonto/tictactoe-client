@@ -39,7 +39,7 @@ export class UserService {
    * Stores a user in the server.
    */
   public PostUser(username: string) {
-    const body: User = {id: this.NewGuid(), name: username};
+    const body: User = {Id: this.NewGuid(), Name: username};
     return this.http.post(this.url + 'api/Users', body).toPromise()
     .then((user: User) => {
       this.user.next(user);
@@ -50,7 +50,7 @@ export class UserService {
   /**
    * Used to mock the GUID creation.
    */
-  private NewGuid() {
+  public NewGuid() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
       // tslint:disable-next-line:no-bitwise
       let r = Math.random() * 16 | 0;
