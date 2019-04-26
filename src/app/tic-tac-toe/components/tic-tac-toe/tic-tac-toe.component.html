@@ -1,6 +1,6 @@
 <div *ngIf="!userIsSet">
   <div>What's your name?</div>
-  <input [(ngModel)]="user.Name">
+  <input [(ngModel)]="user.name">
   <button (click)="SubmitUsername()">Accept</button>
 </div>
 <div *ngIf="userIsSet">

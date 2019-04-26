@@ -31,22 +31,11 @@ export class UserService {
   }
 
   /**
-   * Obtains a user from the rest-api.
-   */
-  public LoadUser(userId: string) {
-    return this.http.get(this.url + 'api/user/' + userId).toPromise()
-    .then((user: User) => {
-      this.user.next(user);
-    })
-    .catch(this.HandleError);
-  }
-
-  /**
    * Stores a user in the server.
    */
   public PostUser(username: string) {
     let promise = new Promise((resolve, reject) => {
-      const body: User = {Id: this.NewGuid(), Name: username};
+      const body: User = {id: this.NewGuid(), name: username};
       return this.http.post(this.url + 'api/user', body).toPromise()
       .then((user: User) => {
         this.user.next(user);

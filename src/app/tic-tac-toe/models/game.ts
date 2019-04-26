@@ -1,16 +1,25 @@
 import { User } from './user';
 
 export class Game {
-    public Id: string;
-    public Player1Id: string;
-    public Player2Id: string;
-    public Symbol: string;
-    public StartDateTime: Date;
-    public LastUpdated: Date;
-    public EndDateTime: Date;
-    public Status: string;
-    public Board: string;
+    public id: string;
+    public player1Id: string;
+    public player2Id: string;
+    public symbol: string;
+    public startDateTime: Date;
+    public lastUpdated: Date;
+    public endDateTime: Date;
+    public status: string;
+    public board: string;
 
-    public Player1: User;
-    public Player2: User;
+    public player1: User;
+    public player2: User;
+
+    /*GetIntBoard(): number[] {
+        let spltBoard = this.Board.split(',');
+        let intBoard = [];
+        for (let i = 0; i < spltBoard.length; i++) {
+            intBoard[i] = parseInt(spltBoard[i], 10);
+        }
+        return intBoard;
+    }*/
 }

@@ -23,7 +23,7 @@ export class TicTacToeComponent implements OnInit {
   }
 
   SubmitUsername() {
-    this.userService.LoadUserByName(this.user.Name)
+    this.userService.LoadUserByName(this.user.name)
     .then((obtainedUser: User) => {
       if (obtainedUser) {
         this.user = obtainedUser;
@@ -31,7 +31,7 @@ export class TicTacToeComponent implements OnInit {
       }
     }).catch((err) => {
       if (err.statusText.includes('Not Found')) {
-        this.userService.PostUser(this.user.Name)
+        this.userService.PostUser(this.user.name)
         .then((postedUser: User) => {
           this.user = postedUser;
           this.userIsSet = true;
