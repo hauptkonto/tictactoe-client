@@ -26,18 +26,40 @@ export class BoardComponent implements OnInit {
   }
 
   setupBoard() {
-    if(this.game && this.game.board) {
+    if (this.game && this.game.board) {
       this.board = this.game.board.split(',');
     }
   }
 
-  onBoardClick(x, y) {
-    const movement: Movement = new Movement();
-    movement.gameId = this.game.id;
-    movement.playerId = this.gameService.user.id;
-    movement.x = x;
-    movement.y = y;
-    this.gameService.Move(movement);
+  onBoardClick(position: number) {
+    if (this.game && this.game.status && this.game.status.toLowerCase() === 'ongoing') {
+      const movement: Movement = new Movement();
+      movement.gameId = this.game.id;
+      movement.playerId = this.gameService.user.id;
+      movement.position = position;
+      this.gameService.Move(movement);
+    }
   }
 
+  /**
+   * Turns the numeric value shown in the grid into a more common
+   * symbol.
+   */
+  showProperSymbol(symbolIndex: number): string {
+    symbolIndex = symbolIndex === undefined ? 0 : symbolIndex;
+    const symbols = [' ', 'X', 'O'];
+    return symbols[symbolIndex];
+  }
+
+  getPlayerNameMessage() {
+    let playerNameMessage = '';
+    if (this.gameService.user && this.gameService.user.name) {
+      playerNameMessage = this.gameService.user.name + ' vs Computer';
+    }
+    return playerNameMessage;
+  }
+
+  restartGame() {
+    this.gameService.NewGame('X');
+  }
 }

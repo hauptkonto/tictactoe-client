@@ -1,7 +1,27 @@
-.board-button {
-    font-size: xx-large;
+.board-container {
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    justify-content: center;
+    --itemSize: 4rem;
+    flex-direction: column;
 }
 
-.game-status {
+.board {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: calc(var(--itemSize)*3);
+}
+
+.board-button {
+    font-size: xx-large;
+    height: var(--itemSize);
+    width: var(--itemSize);
+}
+
+
+.players,
+.restart-button {
     margin-top: 15px;
 }

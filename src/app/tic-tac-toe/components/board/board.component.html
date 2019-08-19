@@ -1,18 +1,11 @@
-<div *ngIf="board">
-  <div>
-    <button class="board-button" (click)="onBoardClick(0,0)">{{board[0]}}</button>
-    <button class="board-button" (click)="onBoardClick(0,1)">{{board[1]}}</button>
-    <button class="board-button" (click)="onBoardClick(0,2)">{{board[2]}}</button>
+<div *ngIf="board" class="board-container">
+  <div class="board">
+    <button class="board-button" *ngFor="let index of [0,1,2,3,4,5,6,7,8]" (click)="onBoardClick(index)">
+      {{showProperSymbol(board[index])}}
+    </button>
   </div>
-  <div>
-    <button class="board-button" (click)="onBoardClick(1,0)">{{board[3]}}</button>
-    <button class="board-button" (click)="onBoardClick(1,1)">{{board[4]}}</button>
-    <button class="board-button" (click)="onBoardClick(1,2)">{{board[5]}}</button>
-  </div>
-  <div>
-    <button class="board-button" (click)="onBoardClick(2,0)">{{board[6]}}</button>
-    <button class="board-button" (click)="onBoardClick(2,1)">{{board[7]}}</button>
-    <button class="board-button" (click)="onBoardClick(2,2)">{{board[8]}}</button>
-  </div>
+  
+  <div class="players">{{getPlayerNameMessage()}}</div>
+  <div class="game-status" *ngIf="game && game.status">Game Status: {{game.status}}</div>
+  <button class="restart-button" (click)="restartGame()">Restart</button>
 </div>
-<div class="game-status" *ngIf="game && game.status">Game Status: {{game.status}}</div>
